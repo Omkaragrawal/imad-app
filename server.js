@@ -1,7 +1,8 @@
-var express = require('express');
-var morgan = require('morgan');
-var path = require('path');
-var Pool = require('pg').Pool;
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const crypto = require('crypto');
+/*var Pool = require('pg').Pool;
 
 var config = {
   user : 'omkar3654',
@@ -9,10 +10,13 @@ var config = {
   host : 'db.imad.hasura-app.io',
   port : '5432',
   password : process.env.DB_PASSWORD
-};
+};*/
 var app = express();
 app.use(morgan('combined'));
 
+//********************************************************
+//                      REQUESTS AND SENDS
+//********************************************************
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -25,7 +29,12 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-var pool = new pool(config);
+app.ger('/hash/:input', function(req, res) {
+    var hashString = hash(req.params.input);
+    res.send(hashString);
+});
+
+/*var pool = new pool(config);
 app.get('/test-db', function (req, result) {
   pool.querry('select * from test',function(err, results){
       if(err){
@@ -34,7 +43,7 @@ app.get('/test-db', function (req, result) {
           res.send(JSON.stringify(result));
       }
   });
-});
+});*/
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
@@ -42,3 +51,13 @@ var port = 80;
 app.listen(port, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+//***********************************************************
+//       FUNCTIONS
+//***********************************************************
+function hash (input) {
+  var hashed = crypto.pbkdf2Sync  
+};
+
+
+
+
