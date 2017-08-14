@@ -30,7 +30,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.ger('/hash/:input', function(req, res) {
-    var hashString = hash(req.params.input);
+    var hashString = hash(req.params.input, 'HELLO.ME');
     res.send(hashString);
 });
 
@@ -54,9 +54,10 @@ app.listen(port, function () {
 //***********************************************************
 //       FUNCTIONS
 //***********************************************************
-function hash (input) {
-  var hashed = crypto.pbkdf2Sync  
-};
+function hash (input, salt) {
+  var hashed = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+  return hashed.toString();
+}
 
 
 
