@@ -56,7 +56,7 @@ app.listen(port, function () {
 //***********************************************************
 function hash (input, salt) {
   var hashed = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
-  return hashed.toString();
+  return hashed.toString('hex');
 }
 
 
