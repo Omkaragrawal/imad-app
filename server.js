@@ -34,6 +34,11 @@ app.get('/hash/:input', function(req, res) {
     res.send(hashString);
 });
 
+app.get ('/create-user', function (req, res) {
+    var salt = getRandomBytes('128').toString('hex');
+    var dbString = crypto.hash(password, salt);
+});
+
 /*var pool = new pool(config);
 app.get('/test-db', function (req, result) {
   pool.querry('select * from test',function(err, results){
