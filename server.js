@@ -29,7 +29,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.ger('/hash/:input', function(req, res) {
+app.get('/hash/:input', function(req, res) {
     var hashString = hash(req.params.input, 'HELLO.ME');
     res.send(hashString);
 });
