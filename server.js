@@ -41,7 +41,7 @@ app.get ('/create-user', function (req, res) {
       if(err){
           res.status(500).send(err.toString());
       } else {
-          res.send("Creation Successful");
+          res.send("Creation Successful" + username);
       }      
   });
 });
