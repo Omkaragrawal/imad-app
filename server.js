@@ -1,3 +1,6 @@
+//*******************************************************
+//              DEPENDENSIES
+//*******************************************************
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -12,7 +15,14 @@ var config = {
   password : process.env.DB_PASSWORD
 };*/
 var app = express();
+var bodyParser = require('bodyParser');
+
+
+
+
+
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 //********************************************************
 //                      REQUESTS AND SENDS
@@ -35,7 +45,9 @@ app.get('/hash/:input', function(req, res) {
 });
 
 app.post ('/create-user', function (req, res) {
-    var salt = getRandomBytes('128').toString('hex');
+    var username = req.body.username;
+    var password = req.body.password;
+    var salt = crypto.RandomBytes('128').toString('hex');
     var dbString = crypto.hash(password, salt);
     pool.querry('INSERT INTO "user" (Username, Password) VALUES ($1, $2)', [username, dbString], function(err, results){
       if(err){
