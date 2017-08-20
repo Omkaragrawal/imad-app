@@ -8,19 +8,18 @@ submit.onclick = function() {
            if(request.status == 200) {
                console.log('USER logged in.');
                alert('Log-in Successful.');
-           } else {
-               if(request.status == 403) {
+           } else if(request.status == 403) {
                    alert('Incorrect password/username');
-               } else(request.status == 500) {
+               } else if(request.status == 500) {
                    alert('SERVER ERROR'); 
                }
            }
         }
-    };
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     console.log(username);
     console.log(password);
     request.open('POST', 'http://omkar3654.imad.hasura-app.io/login');
+    request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({username: username, password: password}));
 };
