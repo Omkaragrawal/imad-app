@@ -2,7 +2,7 @@ console.log('Loaded!');
 
 var submit = document.getElementById('submit');
 submit.onclick = function() {
-    var request = new XHLHttpRequest();
+    var request = new XMLHttpRequest();
     request.onreadystateChange = function() {
         if(request.readyState === XHLHttpRequest.done) {
            if(request.status == 200) {
