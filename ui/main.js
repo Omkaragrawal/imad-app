@@ -6,6 +6,8 @@ submit.onclick = function() {
 
 var username = document.getElementById('username').value;
 var password = document.getElementById('password').value;
-request.open('POST', 'http://omkar3654.imad.hasura-app.io');
+console.log(username);
+console.log(password);
+request.open('POST', 'http://omkar3654.imad.hasura-app.io/login');
 request.send(JSON.stringify({username: username, password: password}));
 };
