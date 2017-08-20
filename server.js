@@ -7,7 +7,6 @@ const path = require('path');
 const crypto = require('crypto');
 var app = express();
 var bodyParser = require('body-parser');
-var pool = new Pool(config);
 var Pool = require('pg').Pool;
 var config = {
   user : 'omkar3654',
@@ -17,6 +16,7 @@ var config = {
   password : process.env.DB_PASSWORD
 };
 
+var pool = new Pool(config);
 
 
 
@@ -85,7 +85,7 @@ app.post ('/login', function (req, res) {
       }
   });
 });
-/*var pool = new pool(config);
+
 app.get('/test-db', function (req, result) {
   pool.querry('select * from test',function(err, results){
       if(err){
@@ -94,7 +94,7 @@ app.get('/test-db', function (req, result) {
           res.send(JSON.stringify(result));
       }
   });
-});*/
+});
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
