@@ -6,7 +6,8 @@ submit.onclick = function() {
     request.onreadystateChange = function() {
         if(request.readyState === XHLHttpRequest.done) {
            if(request.statues === 200) {
-               
+               console.log('USER logged in.');
+               alert('Log-in Successful.');
            } 
         }
     };
