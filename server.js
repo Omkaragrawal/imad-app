@@ -15,7 +15,7 @@ var config = {
   password : process.env.DB_PASSWORD
 };*/
 var app = express();
-var bodyParser = require('bodyParser');
+var bodyParser = require('body-parser');
 
 
 
