@@ -5,6 +5,8 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const crypto = require('crypto');
+var app = express();
+var bodyParser = require('body-parser');
 /*var Pool = require('pg').Pool;
 
 var config = {
@@ -14,8 +16,7 @@ var config = {
   port : '5432',
   password : process.env.DB_PASSWORD
 };*/
-var app = express();
-var bodyParser = require('body-parser');
+
 
 
 
