@@ -70,8 +70,14 @@ app.post ('/login', function (req, res) {
           } else {
               var dbString = result.rows[0].password;
               var salt = dbString.split('$')[2];
-              res.send("Creation Successful" + username);
-      }      
+              var hashePassword = hash(password, salt);
+              if(hashedPassword === dbString){
+              res.send("Credentials correct" + username);
+              } else {
+                  res.send(403).send("Invalid UserName");
+              }
+      }
+      }
   });
 });
 /*var pool = new pool(config);
