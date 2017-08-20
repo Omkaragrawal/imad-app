@@ -7,6 +7,7 @@ const path = require('path');
 const crypto = require('crypto');
 var app = express();
 var bodyParser = require('body-parser');
+var pool = new Pool(config);
 /*var Pool = require('pg').Pool;
 
 var config = {
