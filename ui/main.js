@@ -5,10 +5,16 @@ submit.onclick = function() {
     var request = new XHLHttpRequest();
     request.onreadystateChange = function() {
         if(request.readyState === XHLHttpRequest.done) {
-           if(request.statues === 200) {
+           if(request.status == 200) {
                console.log('USER logged in.');
                alert('Log-in Successful.');
-           } 
+           } else {
+               if(request.status == 403) {
+                   alert('Incorrect password/username');
+               } else(request.status == 500) {
+                   alert('SERVER ERROR'); 
+               }
+           }
         }
     };
     var username = document.getElementById('username').value;
