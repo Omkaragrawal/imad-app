@@ -66,7 +66,7 @@ app.post ('/create-user', function (req, res) {
 app.post ('/login', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    pool.querry('SELECT * FROM "user" WHERE Username = $1 AND password = $2)', [username, dbString], function(err, results){
+    pool.querry('SELECT * FROM "user" WHERE username = $1 AND password = $2)', [username, dbString], function(err, results){
       if(err){
           res.status(500).send(err.toString());
       } else {
